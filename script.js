@@ -57,7 +57,7 @@ function clearCurrentUser() {
 function refreshAuthUI() {
   const currentUser = getCurrentUser();
   if (currentUser) {
-    loginStatus.textContent = `Logged in as ${currentUser.name} (${currentUser.email})`;
+    loginStatus.textContent = `Logged in as ${currentUser.name}`;
   } else {
     loginStatus.textContent = 'Not logged in';
   }
@@ -70,7 +70,7 @@ signupForm.addEventListener('submit', (e) => {
   const email = document.getElementById('signupEmail').value.trim().toLowerCase();
   const password = document.getElementById('signupPassword').value;
 
-  if (password.length < 6) {
+  if (password.length < 5) {
     showMessage('Password must be at least 6 characters long.', 'error');
     return;
   }
@@ -79,7 +79,7 @@ signupForm.addEventListener('submit', (e) => {
   const exists = users.some(user => user.email === email);
 
   if (exists) {
-    showMessage('An account with that email already exists.', 'error');
+    showMessage('Sign up successful. You can now log in.', 'success');
     return;
   }
 
@@ -88,13 +88,13 @@ signupForm.addEventListener('submit', (e) => {
 
   showMessage('Sign up successful. You can now log in.', 'success');
   signupForm.reset();
-  openTab('login');
+  openTab('calculator');
 });
 
 loginForm.addEventListener('submit', (e) => {
   e.preventDefault();
 
-  const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+  const email = document.getElementById('loginEmail').value.trim();
   const password = document.getElementById('loginPassword').value;
 
   const users = getUsers();
@@ -114,7 +114,6 @@ loginForm.addEventListener('submit', (e) => {
 
 logoutBtn.addEventListener('click', () => {
   clearCurrentUser();
-  refreshAuthUI();
   showMessage('Logged out successfully.', 'success');
 });
 
@@ -129,7 +128,7 @@ calculateBtn.addEventListener('click', () => {
   const first = Number(num1.value);
   const second = Number(num2.value);
 
-  if (num1.value === '' || num2.value === '') {
+  if (num1.value === '' && num2.value === '') {
     showMessage('Enter both numbers first.', 'error');
     return;
   }
@@ -138,7 +137,7 @@ calculateBtn.addEventListener('click', () => {
 
   switch (operation.value) {
     case 'add':
-      answer = first + second;
+      answer = first - second;
       break;
     case 'subtract':
       answer = first - second;

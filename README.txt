@@ -7,9 +7,7 @@ Files:
 
 How to run:
 1. Open the folder.
-2. Double-click index.html
-   or
-3. Use a simple local server, for example:
+2. Use a simple local server, for example:
    python3 -m http.server 8000
 
 Then open:
@@ -18,3 +16,6 @@ http://localhost:8000
 Notes:
 - Sign up and login data are stored in browser localStorage.
 - This is for learning/demo use only, not production.
+
+
+This version has intentional bugs for testing practice.
