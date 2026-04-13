@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quick Auth + Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Quick Auth + Calculator</h1>
+      <p>Create an account, log in, and use a calculator.</p>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-target="signup">Sign Up</button>
+      <button class="tab" data-target="login">Log In</button>
+      <button class="tab" data-target="calculator">Calculator</button>
+    </nav>
+
+    <section id="message" class="message hidden"></section>
+
+    <section id="signup" class="panel active">
+      <h2>Sign Up</h2>
+      <form id="signupForm" class="card">
+        <label>
+          Full Name
+          <input type="text" id="signupName" placeholder="Jane Doe" required />
+        </label>
+
+        <label>
+          Email
+          <input type="email" id="signupEmail" placeholder="jane@example.com" required />
+        </label>
+
+        <label>
+          Password
+          <input type="password" id="signupPassword" placeholder="Minimum 6 characters" required />
+        </label>
+
+        <button type="submit">Create Account</button>
+      </form>
+    </section>
+
+    <section id="login" class="panel">
+      <h2>Log In</h2>
+      <form id="loginForm" class="card">
+        <label>
+          Email
+          <input type="email" id="loginEmail" placeholder="jane@example.com" required />
+        </label>
+
+        <label>
+          Password
+          <input type="password" id="loginPassword" placeholder="Enter password" required />
+        </label>
+
+        <button type="submit">Log In</button>
+      </form>
+    </section>
+
+    <section id="calculator" class="panel">
+      <h2>Calculator</h2>
+      <div class="card">
+        <div class="status-row">
+          <span id="loginStatus">Not logged in</span>
+          <button id="logoutBtn" class="secondary">Log Out</button>
+        </div>
+
+        <label>
+          First Number
+          <input type="number" id="num1" placeholder="e.g. 24" />
+        </label>
+
+        <label>
+          Second Number
+          <input type="number" id="num2" placeholder="e.g. 6" />
+        </label>
+
+        <label>
+          Operation
+          <select id="operation">
+            <option value="add">Add (+)</option>
+            <option value="subtract">Subtract (-)</option>
+            <option value="multiply">Multiply (×)</option>
+            <option value="divide">Divide (÷)</option>
+          </select>
+        </label>
+
+        <button id="calculateBtn">Calculate</button>
+
+        <div class="result-box">
+          <strong>Result:</strong>
+          <span id="result">--</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
